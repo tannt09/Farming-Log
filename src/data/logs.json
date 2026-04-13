@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "name": "Seeding",
+    "date": "2026-04-10",
+    "notes": "Planted corn seeds",
+    "status": "COMPLETED"
+  },
+  {
+    "id": "2",
+    "name": "Fertilizing",
+    "date": "2026-04-11",
+    "notes": "Added organic fertilizer",
+    "status": "PENDING"
+  }
+]

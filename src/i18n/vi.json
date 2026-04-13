@@ -1,0 +1,19 @@
+{
+  "title": "Nhật ký nông trại",
+  "add": "Thêm",
+  "edit": "Sửa",
+  "save": "LƯU",
+
+  "COMPLETED": "Hoàn thành",
+  "PENDING": "Chưa hoàn thành",
+
+  "seeding": "Gieo hạt",
+  "fertilizing": "Bón phân",
+
+  "Planted corn seeds": "Gieo hạt bắp",
+  "Added organic fertilizer": "Bón phân hữu cơ",
+  "Activity Name": "Tên hoạt động",
+  "Date": "Ngày",
+  "Notes": "Ghi chú",
+  "Status": "Trạng thái"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Farming Logs",
+  "add": "Add",
+  "edit": "Edit",
+  "save": "SAVE",
+
+  "COMPLETED": "Completed",
+  "PENDING": "Pending",
+
+  "seeding": "Seeding",
+  "fertilizing": "Fertilizing",
+
+  "Planted corn seeds": "Planted corn seeds",
+  "Added organic fertilizer": "Added organic fertilizer"
+}
