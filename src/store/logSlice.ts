@@ -3,10 +3,12 @@ import { Log } from '../types/log';
 
 interface State {
   logs: Log[];
+  isOnline: boolean;
 }
 
 const initialState: State = {
   logs: [],
+  isOnline: true,
 };
 
 const logSlice = createSlice({
@@ -23,9 +25,24 @@ const logSlice = createSlice({
       const index = state.logs.findIndex(l => l.id === action.payload.id);
       if (index !== -1) state.logs[index] = action.payload;
     },
+    setOnline(state, action: PayloadAction<boolean>) {
+      state.isOnline = action.payload;
+    },
+    updateSyncedLogs(state, action: PayloadAction<string[]>) {
+      state.logs = state.logs.map(log =>
+        action.payload.includes(log.id) ? { ...log, synced: true } : log,
+      );
+    },
     initLogs() {},
   },
 });
 
-export const { setLogs, addLog, updateLog, initLogs } = logSlice.actions;
+export const {
+  setLogs,
+  addLog,
+  updateLog,
+  setOnline,
+  updateSyncedLogs,
+  initLogs,
+} = logSlice.actions;
 export default logSlice.reducer;

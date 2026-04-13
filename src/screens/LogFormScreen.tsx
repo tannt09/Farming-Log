@@ -67,6 +67,7 @@ export default function LogFormScreen() {
       date,
       notes,
       status: status ? 'COMPLETED' : 'PENDING',
+      synced: false,
     };
 
     if (editingLog) {

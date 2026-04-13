@@ -1,8 +1,10 @@
 {
-  "title": "Nhật ký nông trại",
+  "farming_logs": "Nhật ký nông trại",
   "add": "Thêm",
   "edit": "Sửa",
   "save": "LƯU",
+  "setting": "Cài đặt",
+  "language": "Ngôn ngữ",
 
   "COMPLETED": "Hoàn thành",
   "PENDING": "Chưa hoàn thành",

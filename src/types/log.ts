@@ -6,4 +6,5 @@ export interface Log {
   date: string;
   notes: string;
   status: LogStatus;
+  synced?: boolean;
 }

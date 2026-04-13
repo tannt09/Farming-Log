@@ -8,6 +8,7 @@ const LogItem = ({
   onEdit,
 }: {
   item: Log;
+  lang?: string;
   onEdit: (log: Log) => void;
 }) => {
   const { t } = useTranslation();

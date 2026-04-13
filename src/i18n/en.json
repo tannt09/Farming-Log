@@ -1,8 +1,10 @@
 {
-  "title": "Farming Logs",
+  "farming_logs": "Farming Logs",
   "add": "Add",
   "edit": "Edit",
   "save": "SAVE",
+  "setting": "Setting",
+  "language": "Language",
 
   "COMPLETED": "Completed",
   "PENDING": "Pending",

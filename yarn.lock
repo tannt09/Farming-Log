@@ -2115,6 +2115,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/netinfo@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "@react-native-community/netinfo@npm:12.0.1"
+  peerDependencies:
+    react: "*"
+    react-native: ">=0.59"
+  checksum: 1b01d5840df4a3b71acb70e755e956d891be27557ec5e166f6f3f173ac7f061f73fc7b705b03bc1444626d81b81d20cbb2f3e35cee149268f97e2cfa8341f823
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.85.0":
   version: 0.85.0
   resolution: "@react-native/assets-registry@npm:0.85.0"
@@ -2380,6 +2390,23 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 3ed1bc5986e4762a5b7b89f22a9c45c2c447be9d0b1ab65b4e835627e3f7e690e1646f43045160039548866f1633372b1ff429f91f27829ac118713340966dcd
+  languageName: node
+  linkType: hard
+
+"@react-navigation/bottom-tabs@npm:^7.15.9":
+  version: 7.15.9
+  resolution: "@react-navigation/bottom-tabs@npm:7.15.9"
+  dependencies:
+    "@react-navigation/elements": ^2.9.14
+    color: ^4.2.3
+    sf-symbols-typescript: ^2.1.0
+  peerDependencies:
+    "@react-navigation/native": ^7.2.2
+    react: ">= 18.2.0"
+    react-native: "*"
+    react-native-safe-area-context: ">= 4.0.0"
+    react-native-screens: ">= 4.0.0"
+  checksum: dfc6944d1fd1772e4b66e4261308ef95d8eca64ced8b3e16600c8c48b4b64bd124e04b15dadf93b7634f96c08c4f317745bfe059a17d67c1afdc866f40160c65
   languageName: node
   linkType: hard
 
@@ -2924,12 +2951,14 @@ __metadata:
     "@react-native-community/cli": 20.1.0
     "@react-native-community/cli-platform-android": 20.1.0
     "@react-native-community/cli-platform-ios": 20.1.0
+    "@react-native-community/netinfo": ^12.0.1
     "@react-native/babel-preset": 0.85.0
     "@react-native/eslint-config": 0.85.0
     "@react-native/jest-preset": 0.85.0
     "@react-native/metro-config": 0.85.0
     "@react-native/new-app-screen": 0.85.0
     "@react-native/typescript-config": 0.85.0
+    "@react-navigation/bottom-tabs": ^7.15.9
     "@react-navigation/native": ^7.2.2
     "@react-navigation/native-stack": ^7.14.10
     "@reduxjs/toolkit": ^2.11.2

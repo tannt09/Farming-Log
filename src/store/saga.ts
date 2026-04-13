@@ -1,11 +1,19 @@
 // src/store/saga.ts
 import { takeEvery, call, put, takeLatest, select } from 'redux-saga/effects';
-import { addLog, initLogs, setLogs, updateLog } from './logSlice';
+import {
+  addLog,
+  initLogs,
+  setLogs,
+  setOnline,
+  updateLog,
+  updateSyncedLogs,
+} from './logSlice';
 import { getLogs, saveLogs } from '../services/storage';
 import { syncLogsApi } from '../services/api';
 import { Log } from '../types/log';
 import mockLogs from '../data/logs.json';
 import { PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '.';
 
 function* handleSave(action: PayloadAction<Log>) {
   const logs: Log[] = yield select((state: any) => state.logs.logs);
@@ -31,8 +39,34 @@ function* handleInitLogs() {
   }
 }
 
+function* handleNetworkChange(action: PayloadAction<boolean>) {
+  const isOnline = action.payload;
+
+  if (!isOnline) return;
+
+  // lấy logs chưa sync
+  const logs: Log[] = yield select((state: RootState) => state.logs.logs);
+
+  const unsyncedLogs = logs.filter(l => !l.synced);
+
+  if (unsyncedLogs.length === 0) return;
+
+  try {
+    yield call(syncLogsApi, unsyncedLogs);
+
+    const ids = unsyncedLogs.map(l => l.id);
+    yield put(updateSyncedLogs(ids));
+
+    console.log('✅ Sync success');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (error) {
+    console.log('❌ Sync failed');
+  }
+}
+
 export default function* rootSaga() {
   yield takeEvery(addLog.type, handleSave);
   yield takeEvery(updateLog.type, handleSave);
   yield takeLatest(initLogs.type, handleInitLogs);
+  yield takeLatest(setOnline.type, handleNetworkChange);
 }

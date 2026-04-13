@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, Switch } from 'react-native';
 import i18n from '../i18n';
+import { useTranslation } from 'react-i18next';
 
 const LanguageSwitch = () => {
+  const { t } = useTranslation();
   const isEnglish = i18n.language === 'en';
 
   const toggleSwitch = () => {
@@ -11,7 +13,7 @@ const LanguageSwitch = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Ngôn ngữ</Text>
+      <Text style={styles.label}>{t('language')}</Text>
 
       <View style={styles.switchContainer}>
         <Text style={styles.langText}>{isEnglish ? 'EN' : 'VI'}</Text>
