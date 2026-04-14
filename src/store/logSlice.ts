@@ -18,13 +18,10 @@ const logSlice = createSlice({
     setLogs(state, action: PayloadAction<Log[]>) {
       state.logs = action.payload;
     },
-    addLog(state, action: PayloadAction<Log>) {
-      state.logs.push(action.payload);
-    },
-    updateLog(state, action: PayloadAction<Log>) {
-      const index = state.logs.findIndex(l => l.id === action.payload.id);
-      if (index !== -1) state.logs[index] = action.payload;
-    },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    addLogToStore(state, action: PayloadAction<Log>) {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    updateLogToStore(state, action: PayloadAction<Log>) {},
     setOnline(state, action: PayloadAction<boolean>) {
       state.isOnline = action.payload;
     },
@@ -39,8 +36,8 @@ const logSlice = createSlice({
 
 export const {
   setLogs,
-  addLog,
-  updateLog,
+  addLogToStore,
+  updateLogToStore,
   setOnline,
   updateSyncedLogs,
   initLogs,

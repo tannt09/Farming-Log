@@ -1,11 +1,11 @@
 // src/store/saga.ts
 import { takeEvery, call, put, takeLatest, select } from 'redux-saga/effects';
 import {
-  addLog,
+  addLogToStore,
   initLogs,
   setLogs,
   setOnline,
-  updateLog,
+  updateLogToStore,
   updateSyncedLogs,
 } from './logSlice';
 import { getLogs, saveLogs } from '../services/storage';
@@ -15,13 +15,29 @@ import mockLogs from '../data/logs.json';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '.';
 
-function* handleSave(action: PayloadAction<Log>) {
+function* handleAddLog(action: PayloadAction<Log>) {
   const logs: Log[] = yield select((state: any) => state.logs.logs);
-  const updatedLogs = [...logs, action.payload];
-  yield call(saveLogs, updatedLogs);
+  const newLogs = [...logs, action.payload];
+  yield put(setLogs(newLogs));
+  yield call(saveLogs, newLogs);
 
   // giả lập online
-  yield call(syncLogsApi, updatedLogs);
+  yield call(syncLogsApi, newLogs);
+}
+
+function* handleUpdateLog(action: PayloadAction<Log>) {
+  const logs: Log[] = yield select((state: any) => state.logs.logs);
+
+  const newLogs = [...logs]; // clone
+  const index = newLogs.findIndex(l => l.id === action.payload.id);
+
+  if (index !== -1) {
+    newLogs[index] = action.payload; // ✅ OK vì đã clone
+  }
+
+  yield put(setLogs(newLogs));
+  yield call(saveLogs, newLogs);
+  yield call(syncLogsApi, newLogs);
 }
 
 function* handleInitLogs() {
@@ -65,8 +81,8 @@ function* handleNetworkChange(action: PayloadAction<boolean>) {
 }
 
 export default function* rootSaga() {
-  yield takeEvery(addLog.type, handleSave);
-  yield takeEvery(updateLog.type, handleSave);
+  yield takeEvery(addLogToStore.type, handleAddLog);
+  yield takeEvery(updateLogToStore.type, handleUpdateLog);
   yield takeLatest(initLogs.type, handleInitLogs);
   yield takeLatest(setOnline.type, handleNetworkChange);
 }

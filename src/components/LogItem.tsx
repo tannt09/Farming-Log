@@ -22,7 +22,11 @@ const LogItem = ({
         <Text style={styles.status}>{t(item.status)}</Text>
       </View>
 
-      <TouchableOpacity style={styles.editBtn} onPress={() => onEdit(item)}>
+      <TouchableOpacity
+        testID="edit-button"
+        style={styles.editBtn}
+        onPress={() => onEdit(item)}
+      >
         <Text style={styles.editText}>{t('edit')}</Text>
       </TouchableOpacity>
     </View>

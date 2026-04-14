@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { RootStackParamList } from '../navigation/AppNavigator';
-import { addLog, updateLog } from '../store/logSlice';
+import { addLogToStore, updateLogToStore } from '../store/logSlice';
 import { Log } from '../types/log';
 import uuid from 'react-native-uuid';
 import { RootState } from '../store';
@@ -71,9 +71,9 @@ export default function LogFormScreen() {
     };
 
     if (editingLog) {
-      dispatch(updateLog(newLog));
+      dispatch(updateLogToStore(newLog));
     } else {
-      dispatch(addLog(newLog));
+      dispatch(addLogToStore(newLog));
     }
 
     navigation.goBack();
@@ -119,7 +119,11 @@ export default function LogFormScreen() {
         <Switch value={status} onValueChange={setStatus} />
       </View>
 
-      <TouchableOpacity style={styles.saveButton} onPress={handleSubmit}>
+      <TouchableOpacity
+        testID="save-button"
+        style={styles.saveButton}
+        onPress={handleSubmit}
+      >
         <Text style={styles.saveButtonText}>{t('save')}</Text>
       </TouchableOpacity>
     </View>

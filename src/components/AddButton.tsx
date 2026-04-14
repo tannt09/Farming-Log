@@ -4,7 +4,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const AddButton = ({ handleSubmit }: { handleSubmit: () => void }) => {
   return (
-    <TouchableOpacity style={styles.fab} onPress={handleSubmit}>
+    <TouchableOpacity
+      testID="add-button"
+      style={styles.fab}
+      onPress={handleSubmit}
+    >
       <Icon name="add" size={28} color="#fff" />
     </TouchableOpacity>
   );
