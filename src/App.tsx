@@ -10,7 +10,7 @@ import './i18n';
 import { subscribeNetwork } from './utils/network';
 import { setOnline } from './store/logSlice';
 
-function NetworkProvider({ children }: any) {
+function NetworkProvider({ children }: { children: React.ReactNode }) {
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -16,7 +16,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '.';
 
 function* handleAddLog(action: PayloadAction<Log>) {
-  const logs: Log[] = yield select((state: any) => state.logs.logs);
+  const logs: Log[] = yield select((state: RootState) => state.logs.logs);
   const newLogs = [...logs, action.payload];
   yield put(setLogs(newLogs));
   yield call(saveLogs, newLogs);
@@ -26,7 +26,7 @@ function* handleAddLog(action: PayloadAction<Log>) {
 }
 
 function* handleUpdateLog(action: PayloadAction<Log>) {
-  const logs: Log[] = yield select((state: any) => state.logs.logs);
+  const logs: Log[] = yield select((state: RootState) => state.logs.logs);
 
   const newLogs = [...logs]; // clone
   const index = newLogs.findIndex(l => l.id === action.payload.id);

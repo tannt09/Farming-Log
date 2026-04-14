@@ -29,7 +29,7 @@ jest.mock('react-i18next', () => ({
 // ===== MOCK COMPONENT CON =====
 
 jest.mock('../src/components/LogItem', () => {
-  return ({ item, onEdit }: any) => {
+  return ({ item, onEdit }: { item: Log; onEdit: (log: Log) => void }) => {
     const { View, Text, TouchableOpacity } = require('react-native');
 
     return (
@@ -49,7 +49,7 @@ jest.mock('../src/components/LogItem', () => {
 
 // AddButton
 jest.mock('../src/components/AddButton', () => {
-  return ({ handleSubmit }: any) => {
+  return ({ handleSubmit }: { handleSubmit: () => void }) => {
     const { TouchableOpacity, Text } = require('react-native');
 
     return (
@@ -61,6 +61,7 @@ jest.mock('../src/components/AddButton', () => {
 });
 
 import { useSelector } from 'react-redux';
+import { Log } from '../src/types/log';
 
 const mockedUseSelector = useSelector as jest.MockedFunction<
   typeof useSelector

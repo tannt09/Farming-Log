@@ -6,15 +6,23 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import LogListScreen from '../screens/LogListScreen';
 import SettingScreen from '../screens/SettingScreen';
 import { useTranslation } from 'react-i18next';
+import { RouteProp } from '@react-navigation/native';
 
-const Tab = createBottomTabNavigator();
+export type BottomTabParamList = {
+  LogList: undefined;
+  Setting: undefined;
+};
+
+type RouteType = RouteProp<BottomTabParamList, keyof BottomTabParamList>;
+
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 const getTabBarIcon = ({
   route,
   color,
   size,
 }: {
-  route: any;
+  route: RouteType;
   color: string;
   size: number;
 }) => {

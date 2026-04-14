@@ -1,97 +1,104 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🌱 Farming Log App (React Native)
 
-# Getting Started
+## 📌 Overview
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+Farming Log is a mobile application that helps farmers record their daily field activities such as seeding, fertilizing, and harvesting.
 
-## Step 1: Start Metro
+The app is designed with an **offline-first approach**, ensuring it works seamlessly even in areas with unstable or no internet connection.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+---
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## 🛠 Tech Stack
 
-```sh
-# Using npm
-npm start
+* **React Native (TypeScript - Strict Mode)**
+* **Redux Toolkit**
+* **Redux-Saga** (for side effects & sync flow)
+* **AsyncStorage** (offline storage)
+* **React Navigation v6/v7**
+* **i18next + react-i18next**
+* **NetInfo** (network detection)
 
-# OR using Yarn
+---
+
+## 📂 Project Structure
+
+```
+src/
+ ├── components/       # Reusable UI components
+ ├── screens/          # App screens
+ ├── navigation/       # Navigation setup
+ ├── store/            # Redux + Saga
+ ├── services/         # API & storage
+ ├── utils/            # Helpers (network, etc.)
+ ├── data/             # Mock JSON data
+ ├── i18n/             # Localization files
+ └── types/            # TypeScript types
+```
+
+---
+
+## ⚙️ Installation & Run
+
+### 1. Install dependencies
+
+```
+yarn
+```
+
+### 2. Start Metro
+
+```
 yarn start
 ```
 
-## Step 2: Build and run your app
+### 3. Run Android
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
+```
 yarn android
 ```
 
-### iOS
+---
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## 🧪 Testing
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### Run tests
 
-```sh
-bundle install
+```
+yarn test
 ```
 
-Then, and every time you update your native dependencies, run:
+---
 
-```sh
-bundle exec pod install
-```
+## 🧠 Architectural Decisions
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### Why Redux + Saga?
 
-```sh
-# Using npm
-npm run ios
+* Clear separation between UI and business logic
+* Handles async flows (offline → online sync) cleanly
+* Easier to scale and test
 
-# OR using Yarn
-yarn ios
-```
+### Why AsyncStorage?
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+* Simple and reliable local storage
+* Suitable for offline-first apps
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Why i18n?
 
-## Step 3: Modify your app
+* Clean language management
+* Easy to extend for more languages
 
-Now that you have successfully run the app, let's make changes!
+---
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## 🔥 What I Would Improve
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+If given more time, I would:
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+* Setup add **prettier** **eslint** **commitlint** to clean and manger code
+* Change **AsyncStorage** by **react-native-sqlite-storage** to optimal for search, filter, sort,... function
+* Add **animations** **skeleton-loading** to improve user experience
 
-## Congratulations! :tada:
+---
 
-You've successfully run and modified your React Native App. :partying_face:
+## 👨‍💻 Author
 
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Tan Nguyen
